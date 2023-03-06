@@ -1,5 +1,5 @@
 # Sepia Pets App
-<img src="https://www.linkpicture.com/q/icon_52.png"  width="20%" height="20%">
+<img src="https://www.linkpicture.com/q/icon_52.png"  width="10%" height="10%">
 
 A mobile application built with Flutter to help display pet information
 
