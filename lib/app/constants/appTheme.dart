@@ -7,5 +7,5 @@ class AppTheme {
           backgroundColor: Colors.white,
           centerTitle: true,
           titleTextStyle: AppFonts.primaryFont
-              .copyWith(fontSize: 18, color: Colors.black)));
+              .copyWith(fontSize: 20, color: Colors.black)));
 }
