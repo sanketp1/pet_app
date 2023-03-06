@@ -21,7 +21,7 @@ class HomeView extends GetView<HomeController> {
         appBar: AppBar(
           elevation: 0,
           title: const Text(
-            'Pets',
+            'Sepia Pets',
           ),
           centerTitle: GetPlatform.isAndroid ? false : true,
         ),

@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: "Pet App",
+      title: "Sepia Pets",
       theme: AppTheme.lightTheme,
       home: SplashScreen(),
     );
@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: 8,
                 ),
                 Text(
-                  "MyPets",
+                  "Sepia Pets",
                   style: AppFonts.primaryFont.copyWith(
                       fontWeight: FontWeight.bold,
                       fontSize: 28,
