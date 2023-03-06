@@ -41,9 +41,9 @@ class HomeController extends GetxController {
   }
 
   //parsing config details from json files
-  Future<void> parseConfigDetails() async {
+  Future<Map<String, dynamic>> parseConfigDetails() async {
     final data = await parseJsonFromAssets(DataPaths.configData);
-    log(data.toString());
+    return data;
   }
 
   //method to parse the summary from wikipedia
@@ -72,11 +72,45 @@ class HomeController extends GetxController {
     }
   }
 
+  bool isWorkingHours(String workHours) {
+    bool isWorkingHrs = false;
+    // Get the current date and time
+    DateTime now = DateTime.now();
+
+    //intiallizing the  working hours
+    int workingHoursStart = 9;
+    int workingHoursEnd = 18;
+
+    bool isWeekday(DateTime date) {
+      int dayOfWeek = date.weekday;
+      // Monday = 1, Friday = 5
+      return dayOfWeek >= 1 && dayOfWeek <= 5;
+    }
+
+    if (workingHoursStart <= now.hour && workingHoursEnd >= now.hour) {
+      if (isWeekday(now)) {
+        isWorkingHrs = true;
+      }
+    }
+
+    return isWorkingHrs;
+  }
+
+//method for initiallizing data
+  Future<void> intiallize() async {
+    final hrs = await parseConfigDetails();
+    final workingHrs = hrs["settings"]["workHours"];
+    canShow.value = isWorkingHours(workingHrs);
+    if (canShow.value) {
+      parsePetDetails();
+      parseConfigDetails();
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();
-    parsePetDetails();
-    parseConfigDetails();
+    intiallize();
   }
 
   @override
