@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:pet_app/app/data/models/petDetails.dart';
+import 'package:pet_app/app/modules/home/views/pet_info_view.dart';
+import 'package:skeletons/skeletons.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -45,9 +48,28 @@ class HomeView extends GetView<HomeController> {
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: ListTile(
-                              leading: CircleAvatar(
-                                
-                                radius: 32,
+                              onTap: () {
+                                Get.to(() => PetInfo(pet: pet));
+                              },
+                              leading: Hero(
+                                tag: pet.title!,
+                                child: CachedNetworkImage(
+                                  cacheKey: pet.title,
+                                  imageUrl: pet.image_url!,
+                                  imageBuilder: (context, imageProvider) =>
+                                      CircleAvatar(
+                                    radius: 32,
+                                    backgroundImage: imageProvider,
+                                  ),
+                                  placeholder: (context, url) => SkeletonAvatar(
+                                    style: SkeletonAvatarStyle(
+                                        shape: BoxShape.circle,
+                                        borderRadius:
+                                            BorderRadius.circular(32)),
+                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                ),
                               ),
                               title: Text(pet.title!),
                             ),

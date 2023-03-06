@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:pet_app/app/data/models/petDetails.dart';
 import 'package:pet_app/app/data/paths/dataPath.dart';
+import 'package:wikidart/wikidart.dart';
 
 class HomeController extends GetxController {
   //setting up bool variable for can show or can't show the information as per config.json
@@ -43,12 +44,25 @@ class HomeController extends GetxController {
     log(data.toString());
   }
 
+  Future<String> getWikiSummary(String query) async {
+    var res = await Wikidart.searchQuery(query);
+    var pageid = res?.results?.first.pageId;
+    if (pageid != null) {
+      var info = await Wikidart.summary(pageid);
+
+      return info!.extract.toString();
+    } else {
+      return "";
+    }
+  }
+
   final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
     parsePetDetails();
     parseConfigDetails();
+ 
   }
 
   @override

@@ -2,26 +2,26 @@
 import 'dart:convert';
 
 class PetDetails {
-  String? imageUrl;
+  String? image_url;
   String? title;
   String? contentUrl;
   String? dateAdded;
   PetDetails({
-    this.imageUrl,
+    this.image_url,
     this.title,
     this.contentUrl,
     this.dateAdded,
   });
-
+  
 
   PetDetails copyWith({
-    String? imageUrl,
+    String? image_url,
     String? title,
     String? contentUrl,
     String? dateAdded,
   }) {
     return PetDetails(
-      imageUrl: imageUrl ?? this.imageUrl,
+      image_url: image_url ?? this.image_url,
       title: title ?? this.title,
       contentUrl: contentUrl ?? this.contentUrl,
       dateAdded: dateAdded ?? this.dateAdded,
@@ -30,7 +30,7 @@ class PetDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imageUrl': imageUrl,
+      'image_url': image_url,
       'title': title,
       'contentUrl': contentUrl,
       'dateAdded': dateAdded,
@@ -39,7 +39,7 @@ class PetDetails {
 
   factory PetDetails.fromMap(Map<String, dynamic> map) {
     return PetDetails(
-      imageUrl: map['imageUrl'] != null ? map['imageUrl'] as String : null,
+      image_url: map['image_url'] != null ? map['image_url'] as String : null,
       title: map['title'] != null ? map['title'] as String : null,
       contentUrl: map['contentUrl'] != null ? map['contentUrl'] as String : null,
       dateAdded: map['dateAdded'] != null ? map['dateAdded'] as String : null,
@@ -52,7 +52,7 @@ class PetDetails {
 
   @override
   String toString() {
-    return 'PetDetails(imageUrl: $imageUrl, title: $title, contentUrl: $contentUrl, dateAdded: $dateAdded)';
+    return 'PetDetails(image_url: $image_url, title: $title, contentUrl: $contentUrl, dateAdded: $dateAdded)';
   }
 
   @override
@@ -60,7 +60,7 @@ class PetDetails {
     if (identical(this, other)) return true;
   
     return 
-      other.imageUrl == imageUrl &&
+      other.image_url == image_url &&
       other.title == title &&
       other.contentUrl == contentUrl &&
       other.dateAdded == dateAdded;
@@ -68,7 +68,7 @@ class PetDetails {
 
   @override
   int get hashCode {
-    return imageUrl.hashCode ^
+    return image_url.hashCode ^
       title.hashCode ^
       contentUrl.hashCode ^
       dateAdded.hashCode;

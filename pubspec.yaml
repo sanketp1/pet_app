@@ -11,6 +11,10 @@ dependencies:
   flutter: 
     sdk: flutter
   google_fonts: ^4.0.3
+ 
+  cached_network_image: ^3.2.3
+  skeletons: ^0.0.3
+  wikidart: ^0.0.1
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
