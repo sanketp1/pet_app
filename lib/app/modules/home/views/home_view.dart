@@ -49,7 +49,7 @@ class HomeView extends GetView<HomeController> {
                             alignment: Alignment.centerLeft,
                             child: ListTile(
                               onTap: () {
-                                Get.to(() => PetInfo(pet: pet));
+                                Get.to(() => PetInfo(pet: pet, controller: controller,));
                               },
                               leading: Hero(
                                 tag: pet.title!,

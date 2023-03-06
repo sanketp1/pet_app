@@ -4,27 +4,28 @@ import 'dart:convert';
 class PetDetails {
   String? image_url;
   String? title;
-  String? contentUrl;
-  String? dateAdded;
+  String? content_url;
+  String? date_added;
   PetDetails({
     this.image_url,
     this.title,
-    this.contentUrl,
-    this.dateAdded,
+    this.content_url,
+    this.date_added,
   });
+ 
   
 
   PetDetails copyWith({
     String? image_url,
     String? title,
-    String? contentUrl,
-    String? dateAdded,
+    String? content_url,
+    String? date_added,
   }) {
     return PetDetails(
       image_url: image_url ?? this.image_url,
       title: title ?? this.title,
-      contentUrl: contentUrl ?? this.contentUrl,
-      dateAdded: dateAdded ?? this.dateAdded,
+      content_url: content_url ?? this.content_url,
+      date_added: date_added ?? this.date_added,
     );
   }
 
@@ -32,8 +33,8 @@ class PetDetails {
     return <String, dynamic>{
       'image_url': image_url,
       'title': title,
-      'contentUrl': contentUrl,
-      'dateAdded': dateAdded,
+      'content_url': content_url,
+      'date_added': date_added,
     };
   }
 
@@ -41,8 +42,8 @@ class PetDetails {
     return PetDetails(
       image_url: map['image_url'] != null ? map['image_url'] as String : null,
       title: map['title'] != null ? map['title'] as String : null,
-      contentUrl: map['contentUrl'] != null ? map['contentUrl'] as String : null,
-      dateAdded: map['dateAdded'] != null ? map['dateAdded'] as String : null,
+      content_url: map['content_url'] != null ? map['content_url'] as String : null,
+      date_added: map['date_added'] != null ? map['date_added'] as String : null,
     );
   }
 
@@ -52,7 +53,7 @@ class PetDetails {
 
   @override
   String toString() {
-    return 'PetDetails(image_url: $image_url, title: $title, contentUrl: $contentUrl, dateAdded: $dateAdded)';
+    return 'PetDetails(image_url: $image_url, title: $title, content_url: $content_url, date_added: $date_added)';
   }
 
   @override
@@ -62,15 +63,15 @@ class PetDetails {
     return 
       other.image_url == image_url &&
       other.title == title &&
-      other.contentUrl == contentUrl &&
-      other.dateAdded == dateAdded;
+      other.content_url == content_url &&
+      other.date_added == date_added;
   }
 
   @override
   int get hashCode {
     return image_url.hashCode ^
       title.hashCode ^
-      contentUrl.hashCode ^
-      dateAdded.hashCode;
+      content_url.hashCode ^
+      date_added.hashCode;
   }
 }

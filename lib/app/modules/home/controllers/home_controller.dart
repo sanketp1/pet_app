@@ -4,8 +4,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:pet_app/app/constants/colors.dart';
 import 'package:pet_app/app/data/models/petDetails.dart';
 import 'package:pet_app/app/data/paths/dataPath.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wikidart/wikidart.dart';
 
 class HomeController extends GetxController {
@@ -44,6 +46,7 @@ class HomeController extends GetxController {
     log(data.toString());
   }
 
+  //method to parse the summary from wikipedia
   Future<String> getWikiSummary(String query) async {
     var res = await Wikidart.searchQuery(query);
     var pageid = res?.results?.first.pageId;
@@ -56,13 +59,24 @@ class HomeController extends GetxController {
     }
   }
 
-  final count = 0.obs;
+  //method for launching the url
+
+  Future<void> launchContentUrl(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+    } else {
+      Get.snackbar("Error", "Could not launch $url",
+          colorText: Colors.white,
+          backgroundColor: AppColor.descriptionTextColor,
+          snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();
     parsePetDetails();
     parseConfigDetails();
- 
   }
 
   @override
@@ -74,6 +88,4 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

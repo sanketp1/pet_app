@@ -15,6 +15,8 @@ dependencies:
   cached_network_image: ^3.2.3
   skeletons: ^0.0.3
   wikidart: ^0.0.1
+  intl: ^0.18.0
+  url_launcher: ^6.1.10
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
