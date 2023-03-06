@@ -1,4 +1,6 @@
 # Sepia Pets App
+<img src="https://www.linkpicture.com/q/icon_52.png"  width="20%" height="20%">
+
 A mobile application built with Flutter to help display pet information
 
 ## installlation
@@ -41,6 +43,9 @@ A mobile application built with Flutter to help display pet information
                     |- app_pages.dart
                     |- app_routes.dart
         |- main.dart
+
+
+        
                     
                     
 
